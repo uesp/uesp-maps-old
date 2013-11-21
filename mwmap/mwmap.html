@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UESP:Morrowind Map v2</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" media="screen and (min-device-width: 1000px)" href="../map2.css?2013-10-10-a" />
+	<link rel="stylesheet" media="screen and (max-device-width: 1000px)" href="../map2mobile.css?2013-10-10-a" />
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrVxCcxeh4zCOHCaRp7OxLj0szxf3t99s&amp;sensor=false"></script>
+	<script type="text/javascript" src="mwmap2.js?2013-11-21"></script>
+	<script type="text/javascript" src="../map_packed.js?2013-11-21"></script>
+</head>
+<body id="umPageContainer">
+
+	<div id="umOverlayBottom" onClick="onCloseHelp();">
+	</div>
+	<div id="umOverlayContent">
+		<div id="umOverlayCloseButton" onClick="onCloseHelp();">
+			Close <img src="../images/searchreseticon.png" alt="[Close Help]" />
+		</div>
+		<iframe id="umOverlayIFrame" src="../smallmaphelp.html"></iframe>
+	</div>
+
+	<div id="umMenuBar">
+		<div id="umTitle">UESP:Morrowind Map</div>
+		
+		<ol class="umMenuLinks">
+			<li class="umMenuItem"><a href="" id="umMapLink">Link to Current Map</a></li>
+			<li class="umMenuItem"><a href="">Reset Map</a></li>
+			<li class="umMenuItem" id="umShowCellGrid" onClick="umOnShowHideCellGrid(this);">Show Cell Grid</li>
+		</ol>
+		
+		<div id="umMenuLinksRight">
+			<ol class="umMenuLinks">
+				<li class="umMenuItem" onClick="umOnShowHelp(this);">Help</li>
+				<li class="umMenuItem"><a href="http://www.uesp.net/wiki/UESPWiki_talk:Morrowind_Map_Design">Discuss</a></li>
+				<li class="umMenuItem"><a href="http://www.uesp.net/wiki/Main_Page">UESP Home</a></li>
+			</ol>
+		</div>
+	</div>
+	<div id="umSearchContainer">
+		<div id="umSearchBox">
+			<form action="none" onSubmit="return umOnSearch();">
+				<input id="umSearchInputText" type="text" name="search" maxlength="100" autocomplete="off"/>
+				<button id="umSearchButton" title="Search the map for this text" name="button" type="submit">
+					<img width="12" height="13" alt="Search" src="../images/search-icon.png">
+				</button>
+				<button id="umSearchResetButton" title="Reset the map search" name="button" type="reset" onclick="umResetSearch();">
+					<img width="12" height="13" alt="Search" src="../images/searchreseticon.png">
+				</button>
+			</form>
+		</div>
+		<div id="umSearchResultsArea">
+			<div id="umSearchResultsHeader">
+			</div>
+			<div id="umSearchResults"></div>
+		</div>
+		<div id="umSearchResultsButton" onClick="umOnShowHideSearchResults();">
+		Hide Search Results
+		</div>
+	</div>
+	<div id="umMapContainer">
+		<div id="map-canvas"></div>
+	</div>
+	
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1386039-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>	
+</body>
+</html>

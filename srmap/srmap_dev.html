@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UESP:Skyrim Map v2</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" media="screen and (min-device-width: 1000px)" href="../map2.css" />
+	<link rel="stylesheet" media="screen and (max-device-width: 1000px)" href="../map2mobile.css" />
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrVxCcxeh4zCOHCaRp7OxLj0szxf3t99s&amp;sensor=false"></script>
+	<script type="text/javascript" src="../markerwithlabel.js"></script>
+	<script type="text/javascript" src="../infobox.js"></script>
+	<script type="text/javascript" src="../flatprojection.js"></script>
+	<script type="text/javascript" src="srmap2.js"></script>
+	<script type="text/javascript" src="../map2.js"></script>
+	<script type="text/javascript" src="../location.js"></script>
+	<script type="text/javascript" src="../label.js"></script>	
+	<script type="text/javascript" src="../mapstate.js"></script>
+	<script type="text/javascript" src="../search.js"></script>
+	<script type="text/javascript" src="../cellresource.js"></script>
+	<script type="text/javascript" src="../map_noedit.js"></script>
+	<script type="text/javascript">
+	</script>
+</head>
+<body id="umPageContainer">
+
+	<div id="umOverlayBottom" onClick="onCloseHelp();">
+	</div>
+	<div id="umOverlayContent">
+		<div id="umOverlayCloseButton" onClick="onCloseHelp();">
+			Close <img src="../images/searchreseticon.png" alt="[Close Help]" />
+		</div>
+		<iframe id="umOverlayIFrame" src="../smallmaphelp.html"></iframe>
+	</div>
+
+	<div id="umMenuBar">
+		<div id="umTitle">UESP:Skyrim Map</div>
+		
+		<ol class="umMenuLinks">
+			<li class="umMenuItem"><a href="" id="umMapLink">Link to Current Map</a></li>
+			<li class="umMenuItem"><a href="srmap.html">Reset Map</a></li>
+			<li class="umMenuItem" id="umShowCellGrid" onClick="umOnShowHideCellGrid(this);">Show Cell Grid</li>
+			<li class="umMenuItem" id="umShowCellResource">
+			<form class="umMenuForm" action="none" onSubmit="return false;">
+				Show Resource <select id="umCellResourceList" name="cellresource" onchange="umOnShowCellResource(this);">
+					<option value="">None</option>
+<option value='NordicBarnacleCluster01'>Barnacle</option>
+<option value='BirdsNest'>Bird Nest</option>
+<option value='FloraMushroom02'>Bleeding Crown</option>
+<option value='FloraMushroom06'>Blisterwort</option>
+<option value='TreeFloraCabbage01'>Cabbage</option>
+<option value='TreeFloraCanisRoot01'>Canis Root</option>
+<option value='CharredSkeever03'>Charred Skeever</option>
+<option value='ChickenNest'>Chicken Nest</option>
+<option value='Clam01'>Clam</option>
+<option value='FloraCreepCluster'>Creep Cluster</option>
+<option value='TreeFloraDeathBell01'>Deathbell</option>
+<option value='TreeFloraDragonsTongue01'>Dragon's Tongue</option>
+<option value='HangingElvesEar01'>Elves Ear</option>
+<option value='FloraMushroom01'>Fly Amanita</option>
+<option value='HangingFrostMirriam'>Frost Mirriam</option>
+<option value='FloraSwampFungalPod01'>Fungal Pod</option>
+<option value='HangingGarlicBraid'>Garlic</option>
+<option value='FloraGiantLichen'>Giant Lichen</option>
+<option value='TreeGourdCluster01'>Gourd</option>
+<option value='TreeFloraHangingMoss01'>Hanging Moss</option>
+<option value='FloraMushroom04'>Imp Stool</option>
+<option value='TreeFloraJazBay01'>Jazbay</option>
+<option value='TreeFloraJuniper01'>Juniper</option>
+<option value='TreeFloraLavender01'>Lavender</option>
+<option value='TreeFloraLeek01'>Leek</option>
+<option value='MammothCheese01'>Mammoth Cheese</option>
+<option value='TreePineForestHollow01BMoraTapinella'>Mora Tapinella</option>
+<option value='TreeFloraMountainFlower01Blue'>Mountain Flower (Blue)</option>
+<option value='TreeFloraMountainFlower01Purple'>Mountain Flower (Purple)</option>
+<option value='TreeFloraMountainFlower01Red'>Mountain Flower (Red)</option>
+<option value='FloraMushroom05'>Namira's Rot</option>
+<option value='TreeFloraNightshade01'>Nightshade</option>
+<option value='HangingPheasant01'>Pheasant</option>
+<option value='TreeFloraPotatoPlant01'>Potato</option>
+<option value='HangingRabbit01'>Rabbit</option>
+<option value='DeadSalmon01'>Salmon</option>
+<option value='TreeAspenLog01ScalyPholiota'>Scaly Pholiota</option>
+<option value='SlaughterfishEggNest01'>Slaughterfish Egg</option>
+<option value='TreeFloraSnowberry01'>Snowberry</option>
+<option value='TreeFloraSpikyGrass01'>Spiky Grass</option>
+<option value='TreeFloraThistle01'>Thistle</option>
+<option value='TreeFloraTundraCotton01'>Tundra Cotton</option>
+<option value='TreeFloraWheat01'>Wheat</option>
+<option value='FloraMushroom03'>White Cap</option>
+				</select>
+			</form>
+			<br/>
+			<div id="umCellResourceGuide">
+				<div class="umCRGuideBox1">1-2</div><div class="umCRGuideBox2">3-5</div><div class="umCRGuideBox3">6-10</div><div class="umCRGuideBox4">11-20</div><div class="umCRGuideBox5">21-50</div><div class="umCRGuideBox6">+51</div>
+			</div>
+			</li>
+		</ol>
+		
+		<div id="umMenuLinksRight">
+			<ol class="umMenuLinks">
+				<li class="umMenuItem" onClick="umOnShowHelp(this);">Help</li>
+				<li class="umMenuItem"><a href="http://www.uesp.net/wiki/UESPWiki_talk:Skyrim_Map_Design">Discuss</a></li>
+				<li class="umMenuItem"><a href="http://www.uesp.net/wiki/Main_Page">UESP Home</a></li>
+			</ol>
+		</div>
+	</div>
+	<div id="umSearchContainer">
+		<div id="umSearchBox">
+			<form action="none" onSubmit="return umOnSearch();">
+				<input id="umSearchInputText" type="text" name="search" maxlength="100" autocomplete="off"/>
+				<button id="umSearchButton" title="Search the map for this text" name="button" type="submit">
+					<img width="12" height="13" alt="Search" src="../images/search-icon.png">
+				</button>
+				<button id="umSearchResetButton" title="Reset the map search" name="button" type="reset" onclick="umResetSearch();">
+					<img width="12" height="13" alt="Search" src="../images/searchreseticon.png">
+				</button>
+			</form>
+		</div>
+		<div id="umSearchResultsArea">
+			<div id="umSearchResultsHeader"></div>
+			<div id="umSearchControlTop"></div>
+			<div id="umSearchResults"></div>
+			<div id="umSearchControlBottom"></div>
+		</div>
+		<div id="umSearchResultsButton" onClick="umOnShowHideSearchResults();">
+		Hide Search Results
+		</div>
+	</div>
+	<div id="umMapContainer">
+		<div id="map-canvas"></div>
+	</div>
+	
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-1386039-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>	
+</body>
+</html>
