@@ -1,0 +1,10 @@
+UESP Game Maps
+
+This maps source is for the online game maps hosted on the Unofficial Elder Scrolls Pages
+(www.uesp.net) using the Google Maps v3 API. Current maps include:
+
+   - Morrowind and Solstheim (mwmap.uesp.net)
+   - Oblivion (obmap.uesp.net)
+   - Shivering Isles (simap.uesp.net)
+   - Skyrim (srmap.uesp.net)
+   - DragonBorn (dbmap.uesp.net)
