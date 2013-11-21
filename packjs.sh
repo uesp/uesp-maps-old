@@ -16,5 +16,5 @@ $PACKCMD map_combined_edit.js   -o map_packed_edit.js   --charset utf-8
 cp map_packed_edit.js map_packed.js
 cp map_combined_edit.js map_combined.js
 
-chown uesp:uespadmin map_*.js
+chown :uespadmin map_*.js
 chmod g+w map_*.js
