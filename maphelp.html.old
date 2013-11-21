@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>UESP Map Help</title>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<link rel="stylesheet" href="maphelp.css" />
+</head>
+<body>
+<h2>UESP Map Help</h2>
+
+<dl>
+<dt><strong>How do I use the map?</strong></dt>
+	<dd>The map works just like <a href="http://maps.google.com">Google Maps</A> except the game map and locations are displayed instead of Earth's.
+	Some common map operations are:
+	<ul>
+		<li><strong>Zoom In/Out</strong> -- Use the mouse's scroll wheel or the slider control in the upper right corner of the map.</li>
+		<li><strong>Pan</strong> -- Use the arrow buttons in the upper left corner of the map or 'drag' the map by left-clicking and dragging the mouse in the map area.
+			You can also use the mini overview map in the lower right corner by clicking or dragging the blue map area.</li>
+		<li><strong>Center to a Location</strong> -- Double-click the location in the map.</li>
+		<li><strong>Reset</strong> -- You can reset the map by clicking in the 'Reset Map' link at the top of the page.</li>
+	</ul>
+
+<P>
+<dt><strong>How do I find locations?</strong></dt>
+	<dd>By default the map shows only certain locations depending on how far you are zoomed in. It will only show all known locations when you are at the highest
+		zoom level. You can also search for specific locations by entering the text in the search box at the top-left of the screen and pressing Enter or clicking the
+		search button (<img src='images/search-icon.png' alt='[Search Button Image]'/>). Search results will be displayed under the search box if the search results area is open
+		(click the <i>"Show Search Results"</i> under the search input box).
+	<p />
+		You can click on a search result to jump to that location at the current zoom level. Similarly, clicking the "zoom in" icon (<img src="images/zoomicon.gif" alt='[Zoom Button Image]' />)
+		can be used to jump to a location at an increased zoom level (one less than the maximum). Click on the <img src="images/iconwikipage.png" alt='[Wiki Page Image]' /> icon to go to the UESP's wiki
+		article for that location/
+		<p />
+		The search results can be cleared by performing a search with no text or by using the 'Reset Search' button (<img src='images/searchreseticon.png' alt='[Reset Search Button Image]' />).</dd>
+
+<P>
+<dt><strong>How do I get a permanent link to a location?</strong></dt>
+	<dd>Use the <i>"Link to Current Map"</i> in the upper right of the page which will set the page address to the appropriate value. You can then copy the address to
+		link to the map later (Right-Click and "Save Link As" in most browsers).</dd>
+
+<P>
+<dt><strong>Location Icon Types</strong></dt>
+	<dd>The location icons are generally the same as those used in Oblivion.
+	<ul>
+		<li><img src="icons/icon0.gif"> -- General</li>
+		<li><img src="icons/iconCamp.gif"> -- Camp</li>
+		<li><img src="icons/iconCave.gif"> -- Cave</li>
+		<li><img src="icons/iconCity.gif"> -- City</li>
+		<li><img src="icons/iconAyleid.gif"> -- Elven Ruin</li>
+		<li><img src="icons/iconFort.gif"> -- Fort Ruin</li>
+		<li><img src="icons/iconMine.gif"> -- Mine</li>
+		<li><img src="icons/iconLandmark.gif"> -- Landmark</li>
+		<li><img src="icons/iconTavern.gif"> -- Tavern/Stable</li>
+		<li><img src="icons/iconTown.gif"> -- Settlement</li>
+		<li><img src="icons/iconDaedric.gif"> -- Daedric Shrine</li>
+		<li><img src="icons/iconOblivion.gif"> -- Oblivion Gate</li>
+	</ul>
+	</dd>
+	<dd>A few other icons have been created.
+	<ul>
+		<li><img src="icons/iconCorpse.gif"> -- Corpse</li>
+		<li><img src="icons/iconHouse.gif"> -- House</li>
+		<li><img src="icons/iconNirnroot.gif"> -- Nirnroot</li>
+		<li><img src="icons/iconShip.gif"> -- Ship</li>
+		<li><img src="icons/iconShop.gif"> -- Shop</li>
+	</ul>
+	</dd>
+<p />
+<dt><strong>Requirements and Tested Browsers</strong></dt>
+	<dd>
+	<ul>
+		<li>JavaScript Enabled Browser</li>
+		<li>Any modern browser (tested in Firefox, IE, and Chrome)</li>
+		<li>Goggle Maps works with most <a href="http://local.google.com/support/bin/answer.py?answer=16532&topic=1499">Modern Browsers</a>.</li>
+	</ul>
+	If you experience problems with a particular browser or operating system just <a href="mailt:dave@uesp.net">Let Me Know</a>.
+	</dd>
+<p/ >
+<dt><strong>Interesting Statistics</strong></dt>
+	<dd>
+	<ul>
+		<li>Locations
+			<ul>
+				<li>Skyrim: About ?</li>
+				<li>Oblivion: About 1000</li>
+				<li>Morrowind: About 1500</li>
+			</ul>
+		</li>
+		<li>Map Data
+			<ul>
+				<li>Skyrim: ? images totaling ? MB.</li>
+				<li>Oblivion: 23,171 images totaling 213 MB.</li>
+				<li>Shivering Isles: 5,462 images totaling 42 MB</li>
+				<li>Morrowind: 21,853 images totaling 255 MB</li>
+			</ul>
+		</li>
+	</ul>
+	</dd>
+<p />
+<dt><strong>Contacting the Author</strong></dt>
+	<dd>Feel free to <a href="mailto:uesp@sympatico.ca">Send Me</A> any comments, suggestions, or bug reports on the map.</dd>
+<p />
+<dt><b>How does it work?</b></dt>
+	<dd>The map just uses the freely available Google Maps API using map data exported from Oblivion's Construction Set. For more information on the design and
+		implementation of the map can be found on the following UESP pages:
+		<ul>
+			<li><a href="http://www.uesp.net/wiki/UESPWiki:Oblivion_Map_Design">Oblivion Map Design</a></li>
+		</ul
+	</dd>
+
+</dl>
+</body>
+</html>

@@ -1,0 +1,516 @@
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+#map-canvas, #map_canvas {
+	height: 100%;
+	width: 100%;
+}
+
+@media print {
+	html, body {
+		height: auto;
+	}
+
+	#map-canvas, #map_canvas {
+		height: 650px;
+	}
+}
+
+#panel {
+	position: absolute;
+	top: 5px;
+	left: 50%;
+	margin-left: -180px;
+	z-index: 5;
+	background-color: #fff;
+	padding: 5px;
+	border: 1px solid #999;
+}
+
+.umLocationInfo {
+	font-family: arial !important;
+	font-weight: bold !important;
+	padding: 0px;
+	margin: 0px;
+	width: 275px;
+	height: 100px;
+	overflow: hidden;
+}
+
+.umLocationInfoLarge {
+	font-family: arial !important;
+	font-weight: bold  !important;
+	padding: 0px;
+	margin: 0px;
+	width: 275px;
+	height: 220px;
+	overflow: hidden;
+}
+
+.umLocationInfoName {
+	font-size: 20px;
+	font-weight: bold;
+	padding: 0px;
+	margin: 0px;
+	white-space: nowrap;
+}
+
+.umLocationInfoPos,
+.umLocationInfoType,
+.umLocationInfoEdId {
+	font-size: 12px !important;
+	height: 12px;
+	padding: 0px;
+	margin: 0px;
+	margin-left: 10px;
+}
+
+.umLocationInfo .umLocationInfoLink a {
+	font-size: 16px !important;
+	height: 20px;
+	padding: 0px;
+	margin: 0px;
+	margin-left: 10px;
+	white-space: nowrap;
+}
+
+#umSearchBox {
+	width: 100%;
+	height: 30px;
+	z-index: 998;
+	border: 1px solid #3333ff;
+	background-color: white;
+}
+
+#umSearchInputText {
+	padding-left: 5px;
+	border: none;
+	-webkit-appearance: none;
+	background-color: transparent;
+	outline: none;
+	font-size: 18px;
+	width: 270px;
+}
+
+#umPageContainer {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	overflow: hidden;
+	top: 0;
+	left: 0;
+}
+
+#umMapContainer {
+	position: absolute;
+	top: 30px;
+	width: 100%;
+	bottom: 0;
+}
+
+#umMenuBar {
+	position: absolute;
+	padding: 0px;
+	top: 0px;
+	left: 0px;
+	height: 30px;
+	width: 100%;
+	background-color: #333333;
+	z-index: 999;
+	border-bottom: 1px solid #000;
+}
+
+#umTitle {
+	display: inline;
+	font-family: Arial;
+	font-size: 20px;
+	font-weight: bold;
+	color: white;
+	padding-right: 50px;
+}
+
+.umCellGridVisible {
+	background-color: #999;
+}
+
+.umCellGridHidden {
+	background-color: #333;
+}
+
+.umCellGridVisible:hover {
+	background-color: #666;
+}
+
+.umCellGridHidden:hover {
+	background-color: #666;
+}
+
+.umMenuLinks {
+	display: inline;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	background: transparent;
+	vertical-align: baseline;
+	font-family: Arial, sans-serif;
+	font: 20px Arial, sans-serif;
+	font-weight: bold;
+	color: #cccccc;
+}
+
+#umMenuLinksRight {
+	position: absolute;
+	top: 0px;
+	display: block;
+	right: 0;
+	padding-right: 10px;
+}
+
+.umMenuItem {
+	cursor: pointer;
+	position: relative;
+	display: inline-block;
+	line-height: 26px;
+	padding-right: 5px;
+	padding-left: 5px;
+	vertical-align: top;
+	text-align: -webkit-match-parent;
+	border-top: 2px solid #cc0000;
+}
+
+.umMenuItem:hover {
+	background-color: #666;
+}
+
+.umMenuItem a {
+	cursor: pointer;
+	display: block;
+	text-decoration: none !important;
+	color: #ccc;	
+}
+
+.umMenuItem a:hover {
+}
+
+#umSearchButton {
+	background-color: transparent;
+	background-image: none;
+	border: medium none;
+	cursor: pointer;
+	margin: 0;
+	padding: 0.2em 0.4em 0.2em 0.2em;
+	position: absolute;
+	right: 30px;
+	top: 3px;
+	width: 20px;
+	outline: none;
+}
+
+#umSearchResetButton {
+	background-color: transparent;
+	background-image: none;
+	border: medium none;
+	cursor: pointer;
+	margin: 0;
+	padding: 0.2em 0.4em 0.2em 0.15em;
+	position: absolute;
+	right: 2px;
+	top: 3px;
+	width: 16px;
+	outline: none;
+}
+
+#umSearchButton:hover {
+	background-color: #ccc;
+}
+
+#umSearchResetButton:hover {
+	background-color: #ccc;
+}
+
+#umSearchContainer {
+	position: absolute;
+	top: 34px;
+	left: 5px;
+	height: 100%;
+	width: 330px;
+	z-index: 998;
+}
+
+#umSearchResultsArea {
+	display: block;
+	position: absolute;
+	border: 1px solid gray;
+	background-color: white;
+	width: 100%;
+	top: 26px;
+	bottom: 58px;
+	overflow: auto;
+}
+
+#umSearchResultsButton {
+	display: block;
+	position: absolute;
+	border: 1px solid gray;
+	background-color: #ccc;
+	cursor: pointer;
+	width: 100%;
+	height: 24px;
+	bottom: 40px;
+	text-align: center;
+	color: #666666;
+	font-family: Arial, sans-serif;
+	font-size: 16px;
+}
+
+#umSearchResultsButton:hover {
+	background-color: #999;	
+}
+
+#umSearchResultsHeader {
+	font-family: Arial, san-serif;
+	font-size: 12px;
+	color: #666666;
+}
+
+#umResult {
+	margin-top: 4px;
+	margin-bottom: 0px;
+}
+
+#umResultLink {
+	position: relative;
+}
+
+#umResultIconBox {
+	position: relative;
+	display: inline-block;
+	width: 15px;
+	left: 1px;
+}
+
+#umResultIcon {
+	position: relative;
+	left: 0px;
+	top: 4px;
+}
+
+#umResultZoom {
+	font-size: 10px;
+	position: relative;
+	left: 10px;
+}
+
+#umResultWikiLink {
+	position: relative;
+	font-size: 11px;
+	left: 20px;
+	font-family: arial;
+	top: 4px;
+	border: none;
+}
+
+#umResultLinkBox {
+	position: relative;
+	width: 280px;	
+	left: 5px;
+}
+
+#umResultLoc {
+	position: relative;
+	display: inline;
+	left: 0px;
+	font-size: 10px;
+}
+
+#umResultLocType {
+	display: inline;
+	position: relative;
+	font-size: 10px;
+	margin-left: 30px;
+}
+
+#umSearchResults {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-style: normal;
+	font-size: 13px;
+}
+
+#umZoomIcon {
+	position: relative;
+	top: 4px;
+}
+
+.umHidden {
+	display:none;
+}
+
+#umOverlayBottom {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	z-index: 998;
+	width: 100%;
+	height: 100%;
+	opacity: 0.7;
+	background-color: #333333;
+	visibility: hidden;
+}
+
+#umOverlayContent {
+	position: absolute;
+	margin: auto;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 999;	
+	width: 650px;
+	height: 900px;
+	background-color: #ffffff;
+	border: 1px solid black;
+	opacity: 1;
+	visibility: hidden;
+}
+
+#umOverlayCloseButton {
+	cursor: pointer;
+	text-align: right;
+	font-family: Arial, san-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #990000;
+	background-color: #cccccc;
+	vertical-align: middle;
+	width: 100%;
+	height: 28px;
+	padding-top: 6px;
+}
+
+#umOverlayCloseButton img {
+	border: none;
+}
+
+#umOverlayCloseButton img {
+	vertical-align: middle;
+	margin-bottom: 2px;
+	margin-right: 4px;
+	border: 1px solid gray;
+	width: 16px;
+	height: 16px;
+}
+
+#umOverlayCloseButton:hover {
+	background-color: #999999;
+}
+
+#umOverlayIFrame {
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
+.umLocationExpand {
+	font-family: Arial, sans-serif !important;
+	font-size: 16px !important;
+	font-weight: normal !important;
+	text-align: right;
+	cursor: pointer;
+	color: #999;
+}
+
+.umLocationExpand:hover {
+	background-color: #999999;
+	color: #fff;
+}
+
+.labels {
+	color: #ffff00;
+	font-family: "Lucida Grande", "Arial", sans-serif !important;
+	font-size: 20px !important;
+	font-weight: normal !important;
+	border: none;
+	white-space: nowrap;
+	text-shadow: 0px 0px 3px #000;
+}
+
+.labelsdisabled {
+	color: #ff3333;
+	font-family: "Lucida Grande", "Arial", sans-serif !important;
+	font-size: 20px !important;
+	font-weight: normal !important;
+	border: none;
+	white-space: nowrap;
+	text-shadow: 0.14em 0.14em #000;
+}
+
+
+.umMenuForm {
+	display: inline;
+}
+
+#umCellResourceGuide {
+	display: block;
+	position: absolute;
+	visibility: hidden;
+	
+}
+
+.umCRGuideBox1 {
+	display: inline-block;
+	background-color: #ff00ff;
+	text-align: center;
+	text-shadow: 1px 1px black;
+	width: 36px;
+}
+
+.umCRGuideBox2 {
+	display: inline-block;
+	background-color: #0000ff;
+	text-align: center;
+	text-shadow: 1px 1px black;
+	width: 36px;
+}
+
+.umCRGuideBox3 {
+	display: inline-block;
+	background-color: #00ff00;
+	text-align: center;
+	text-shadow: 1px 1px black;
+	width: 36px;
+}
+
+.umCRGuideBox4 {
+	display: inline-block;
+	background-color: #ffff00;
+	text-align: center;
+	text-shadow: 1px 1px black;
+	width: 36px;
+}
+
+.umCRGuideBox5 {
+	display: inline-block;
+	background-color: #ff6633;
+	text-align: center;
+	text-shadow: 1px 1px black;
+	width: 36px;
+}
+
+.umCRGuideBox6 {
+	display: inline-block;
+	background-color: #ff0000;
+	text-align: center;
+	text-shadow: 1px 1px black;
+	width: 36px;
+}
+
+#umSearchControlTop, #umSearchControlBottom {
+	font-family: arial;
+	font-size: 14px;
+}
+
+
