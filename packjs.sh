@@ -5,11 +5,13 @@
 # as some modifications may have been made to them.
 #
 
+PACKCMD="java -jar /home/dave/bin/yuicompressor-2.4.8.jar"
+
 cat markerwithlabel.js infobox.js flatprojection.js map2.js location.js label.js mapstate.js search.js cellresource.js map_noedit.js > map_combined_noedit.js
 cat markerwithlabel.js infobox.js flatprojection.js map2.js location.js label.js mapstate.js search.js cellresource.js map_edit.js   > map_combined_edit.js
 
-java -jar /home/dave/bin/yuicompressor-2.4.8.jar map_combined_noedit.js -o map_packed_noedit.js --charset utf-8
-java -jar /home/dave/bin/yuicompressor-2.4.8.jar map_combined_edit.js   -o map_packed_edit.js   --charset utf-8
+$PACKCMD map_combined_noedit.js -o map_packed_noedit.js --charset utf-8
+$PACKCMD map_combined_edit.js   -o map_packed_edit.js   --charset utf-8
 
 cp map_packed_edit.js map_packed.js
 cp map_combined_edit.js map_combined.js
