@@ -77,5 +77,9 @@ if [ -z $? ]; then
 	exit
 fi
 
+# Delete old files manually until I find a better way without risking
+# removing something by accident.
+rm -f $INSTALLPATH/maphelp.html.old
+
 echo "Finished installing the UESP map source to $INSTALLPATH."
 
