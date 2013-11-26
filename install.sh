@@ -80,6 +80,17 @@ fi
 # Delete old files manually until I find a better way without risking
 # removing something by accident.
 rm -f $INSTALLPATH/maphelp.html.old
+rm -f $INSTALLPATH/srmap/getmaplocs.php
+rm -f $INSTALLPATH/srmap/setmaplocs.php
+rm -f $INSTALLPATH/srmap/getcellsources.php
+rm -f $INSTALLPATH/dbmap/getmaplocs.php
+rm -f $INSTALLPATH/dbmap/setmaplocs.php
+rm -f $INSTALLPATH/simap/getmaplocs.php
+rm -f $INSTALLPATH/simap/setmaplocs.php
+rm -f $INSTALLPATH/obmap/getmaplocs.php
+rm -f $INSTALLPATH/obmap/setmaplocs.php
+rm -f $INSTALLPATH/mwmap/getmaplocs.php
+rm -f $INSTALLPATH/mwmap/setmaplocs.php
 
 echo "Finished installing the UESP map source to $INSTALLPATH."
 
