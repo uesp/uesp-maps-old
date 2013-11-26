@@ -3,6 +3,11 @@
 // Configuration file that includes the database host, user, and passwords
 require '/home/uesp/secrets/maps.secrets';
 
+if (!$db = mysql_connect($uespMapsWriteDBHost, $uespMapsWriteUser, $uespMapsWritePW)) {
+	echo '<error value="Could not connect to mysql" />';
+	exit;
+}
+
 if (array_key_exists('game' ,$_GET)) {
 	$game = mysql_real_escape_string($_GET['game']);
 }
@@ -12,10 +17,6 @@ else {
 
 $dbname = $game . '_map_data';
 
-if (!$db = mysql_connect($uespMapsWriteDBHost, $uespMapsWriteUser, $uespMapsWritePW)) {
-	echo '<error value="Could not connect to mysql" />';
-	exit;
-}
 if (!mysql_select_db($dbname, $db)) {
 	echo '<error value="Could not select database" />';
 	exit;
