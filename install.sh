@@ -69,7 +69,7 @@ fi
 
 echo "Backed up any old map source in the installation path to $BACKUPPATH."
 
-rsync -a $VERBOSEOPT --exclude='.hg*' $SCRIPTPATH/ $INSTALLPATH/
+rsync -a $VERBOSEOPT --exclude='.hg*' --exclude='*.sh' $SCRIPTPATH/ $INSTALLPATH/
 
 
 if [ -z $? ]; then
