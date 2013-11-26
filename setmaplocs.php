@@ -12,7 +12,28 @@ if (array_key_exists('game' ,$_GET)) {
 	$game = mysql_real_escape_string($_GET['game']);
 }
 else {
-	$game = 'sr';
+	if (strpos($_SERVER['PHP_SELF'],"obmap")) {
+		$game = "ob";
+	}
+	else if (strpos($_SERVER['PHP_SELF'],"srmap"))
+	{
+		$game = "sr";
+	}
+	else if (strpos($_SERVER['PHP_SELF'],"simap")) {
+		$game = "si";
+	}
+	else if (strpos($_SERVER['PHP_SELF'],"mwmap")) {
+		$game = "mw";
+	}
+	else if (strpos($_SERVER['PHP_SELF'],"dbmap")) {
+		$game = "db";
+	}
+	else if (strpos($_SERVER['PHP_SELF'],"apmap")) {
+		$game = "ap";
+	}
+	else {
+		$game = "sr";
+	}
 }
 
 $dbname = $game . '_map_data';
