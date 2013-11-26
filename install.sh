@@ -25,7 +25,7 @@ SCRIPTPATH=`dirname $SCRIPT`
 INSTALLPATH=`readlink -f $1`
 
 # Change the below to '-v' to display the files that rsync copies
-VERBOSEOPT=''
+VERBOSEOPT='-v'
 
 if [ -z $INSTALLPATH ]; then
 	echo "Error: Missing install path!"
@@ -60,7 +60,7 @@ if [ -z $? ]; then
         exit
 fi
 
-rsync -am $VERBOSEOPT --compare-dest=$SCRIPTPATH/ --exclude='.hg*' --exclude='zoom*' $INSTALLPATH/ $BACKUPPATH/
+rsync -am $VERBOSEOPT --compare-dest=$SCRIPTPATH/ --exclude='.hg*' --exclude='czoom*' --exclude='zoom*' $INSTALLPATH/ $BACKUPPATH/
 
 if [ -z $? ]; then
         echo "Error: Failed to backup the existing map source to $BACKUPPATH!"
