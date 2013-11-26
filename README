@@ -1,4 +1,7 @@
-UESP Game Maps
+	UESP Game Maps
+	==============
+	by Dave Humphrey (dave@uesp.net)
+	Released under the GPL v2
 
 This maps source is for the online game maps hosted on the Unofficial Elder Scrolls Pages
 (www.uesp.net) using the Google Maps v3 API. Current maps include:
@@ -8,3 +11,23 @@ This maps source is for the online game maps hosted on the Unofficial Elder Scro
    - Shivering Isles (simap.uesp.net)
    - Skyrim (srmap.uesp.net)
    - DragonBorn (dbmap.uesp.net)
+
+
+Installation 
+------------
+   - Clone the maps repostitory on the server
+
+        hg clone https://code.google.com/p/uesp.maps/
+
+   - If this is a new installation create the installation directory and copy the
+     map tile images from another server.
+
+	mkdir /path/to/maps/
+	rsync -avz user@maps.uesp.net:/shared/uesp/maps/ /path/to/maps/
+
+   - Run the install script from the code path with the target installation directory:
+
+   	cd uesp.maps
+	./install.sh /path/to/maps/
+
+
