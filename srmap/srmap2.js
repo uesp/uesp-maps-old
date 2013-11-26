@@ -26,9 +26,9 @@ var umImagePath		= "http://maps.uesp.net/";
 var umMapURL		= "http://srmap.uesp.net/";
 
 	// Default script locations
-var umGetMapURL = "getmaplocs.php";
-var umSetMapURL = "setmaplocs.php";
-var umGetResourceURL = "getcellresources.php";
+var umGetMapURL = "../getmaplocs.php";
+var umSetMapURL = "../setmaplocs.php";
+var umGetResourceURL = "../getcellresources.php";
 
 	// Map properties and constants
 var umMapDefaultCenter		= new google.maps.LatLng(89.87, -179.575);

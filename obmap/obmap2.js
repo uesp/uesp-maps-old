@@ -17,15 +17,12 @@ var umTilePathPrefix = "/zoom";
 //var umMapURL	= umGame + "map.html";
 
 	// Live paths
-//var umImagePath	= "http://maps.uesp.net/";
-//var umMapURL		= "http://www.uesp.net" + umGamePath + umGame + "map.shtml";
 var umImagePath		= "http://maps.uesp.net/";
-//var umImagePath		= "http://www.uesp.net/maps2/";
 var umMapURL		= "http://obmap.uesp.net/";
 
 	// Default script locations
-var umGetMapURL = "getmaplocs.php";
-var umSetMapURL = "setmaplocs.php";
+var umGetMapURL = "../getmaplocs.php";
+var umSetMapURL = "../setmaplocs.php";
 
 	// Map properties and constants
 var umMapDefaultCenter		= new google.maps.LatLng(89.85, -179.63);
