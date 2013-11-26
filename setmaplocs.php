@@ -4,7 +4,7 @@
 require '/home/uesp/secrets/maps.secrets';
 
 if (array_key_exists('game' ,$_GET)) {
-	$game = mysql_real_escape_string($_GET['formid']);
+	$game = mysql_real_escape_string($_GET['game']);
 }
 else {
 	$game = 'sr';
