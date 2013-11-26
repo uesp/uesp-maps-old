@@ -82,7 +82,7 @@ fi
 rm -f $INSTALLPATH/maphelp.html.old
 rm -f $INSTALLPATH/srmap/getmaplocs.php
 rm -f $INSTALLPATH/srmap/setmaplocs.php
-rm -f $INSTALLPATH/srmap/getcellsources.php
+rm -f $INSTALLPATH/srmap/getcellresources.php
 rm -f $INSTALLPATH/dbmap/getmaplocs.php
 rm -f $INSTALLPATH/dbmap/setmaplocs.php
 rm -f $INSTALLPATH/simap/getmaplocs.php
