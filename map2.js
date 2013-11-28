@@ -104,7 +104,6 @@ function umSetupMap() {
 	var InputValues = umGetInputValues();
 	
 	google.maps.event.addListenerOnce(umMap, 'idle', function(){
-		console.debug("idle");
 		umUpdateMapFromInput(InputValues);
 		umUpdateShowHideCellGrid();
 		umGetMarkers();
@@ -112,7 +111,6 @@ function umSetupMap() {
 		umSetupEditMap();
 		
 		google.maps.event.addListener(umMap,'bounds_changed', function() {
-			console.debug("bounds_changed");
 			umUpdateDiffMarkers(); 
 			umUpdateCellGridLabelsZoom(); 
 		} );
