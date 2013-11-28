@@ -103,27 +103,29 @@ function umSetupMap() {
 	
 	var InputValues = umGetInputValues();
 	
-	google.maps.event.addListener(umMap,'bounds_changed', function() { 
-		umUpdateDiffMarkers(); 
-		umUpdateCellGridLabelsZoom(); 
-	} );
-	
-	google.maps.event.addListener(umMap,'center_changed', function() {
-		umCheckMapBounds();
-	});
-	
-	google.maps.event.addListener(umMap,'zoom_changed', function() { 
-		umUpdateCellGridLabelsZoom();
-	});
-	
-	google.maps.event.addListener(umMap,'dblclick', umCenterMapOnClick);
-	
 	google.maps.event.addListenerOnce(umMap, 'idle', function(){
+		console.debug("idle");
 		umUpdateMapFromInput(InputValues);
 		umUpdateShowHideCellGrid();
 		umGetMarkers();
 		umUpdateLink();
 		umSetupEditMap();
+		
+		google.maps.event.addListener(umMap,'bounds_changed', function() {
+			console.debug("bounds_changed");
+			umUpdateDiffMarkers(); 
+			umUpdateCellGridLabelsZoom(); 
+		} );
+		
+		google.maps.event.addListener(umMap,'center_changed', function() {
+			umCheckMapBounds();
+		});
+		
+		google.maps.event.addListener(umMap,'zoom_changed', function() { 
+			umUpdateCellGridLabelsZoom();
+		});
+		
+		google.maps.event.addListener(umMap,'dblclick', umCenterMapOnClick);
 	});
 	
 }
@@ -787,6 +789,8 @@ function umUpdateMapFromInput(InputValues)
 	var bShowResults;
 	var bShowCells;
 	
+	umUpdateSearchFromInput(InputValues);
+	
 	if (Zoom === null || Zoom === "") {
 		Zoom = umMapLinkZoomedValue;
 		ZoomB = umMapDefaultZoom;
@@ -875,7 +879,6 @@ function umUpdateMapFromInput(InputValues)
 	
 	umMap.setOptions(mapOptions);
 	
-	umUpdateSearchFromInput(InputValues);
 }
 
 

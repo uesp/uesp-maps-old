@@ -8,19 +8,19 @@ function CMapLocation(LocData)
 		this.X = Math.round(parseFloat(LocData.getAttribute("X")));
 		this.Y = Math.round(parseFloat(LocData.getAttribute("Y")));
 		this.Z = Math.round(parseFloat(LocData.getAttribute("Z")));
-		this.Name = unescape(LocData.getAttribute("name"));
+		this.Name = decodeURIComponent(LocData.getAttribute("name"));
 		
-		this.EditorID = unescape(LocData.getAttribute("edid"));
+		this.EditorID = decodeURIComponent(LocData.getAttribute("edid"));
 		if (this.EditorID === null || this.EditorID === 'null') this.EditorID = '';
 		
-		this.Worldspace = unescape(LocData.getAttribute("ws"));
+		this.Worldspace = decodeURIComponent(LocData.getAttribute("ws"));
 		this.Type = parseInt(LocData.getAttribute("type"), 10);
-		this.Namespace = LocData.getAttribute("ns");
-		this.Region = LocData.getAttribute("region");
+		this.Namespace = decodeURIComponent(LocData.getAttribute("ns"));
+		this.Region = decodeURIComponent(LocData.getAttribute("region"));
 		this.DisplayLevel = parseInt(LocData.getAttribute("level"), 10);
 		this.LabelPosition = parseInt(LocData.getAttribute("labpos"), 10);
-		this.WikiPage = unescape(LocData.getAttribute("page"));
-		this.Tags = unescape(LocData.getAttribute("tags"));
+		this.WikiPage = decodeURIComponent(LocData.getAttribute("page"));
+		this.Tags = decodeURIComponent(LocData.getAttribute("tags"));
 		if (this.NameSpace === '' || this.Namespace === null) this.Namespace = umWikiNameSpace;
 		if (this.Region === '' || this.Region === null) this.Region = umRegionName;
 		
@@ -78,11 +78,11 @@ function umMakeGetQueryBounds(MapState, SWX, SWY, NEX, NEY)
 	var QueryStr = umGetMapURL + "?game=" + umGame + "&zoom=" + MapState.Zoom + "&BottomLeftX=" + Math.round(SWX) + "&BottomLeftY=" + Math.round(SWY) + "&TopRightX=" + Math.round(NEX) + "&TopRightY=" + Math.round(NEY);
 
 	if (MapState.HasSearch()) {
-		QueryStr += "&SearchText=" + escape(umMapState.SearchText);
+		QueryStr += "&SearchText=" + encodeURIComponent(umMapState.SearchText);
 	}
 
 	if (MapState.StartRow) {
-		QueryStr += "&StartRow=" + escape(umMapState.StartRow);
+		QueryStr += "&StartRow=" + encodeURIComponent(umMapState.StartRow);
 	}
 
 	if (MapState.ShowDisabled) {
@@ -273,7 +273,7 @@ function umMakeInnerLocationInfoContent(Location, ID)
 	//Content += "<div class='umLocationInfoPos'>LabelPos: " + Location.LabelPosition + "</div>";
 
 	if (Location.WikiPage) {
-		Content += "<div class='umLocationInfoLink'><a href='http://www.uesp.net/wiki/" + Location.Namespace + ":" + escape(Location.WikiPage) + "'>" + Location.Namespace + ":" + Location.WikiPage + "</a></div>";
+		Content += "<div class='umLocationInfoLink'><a href='http://www.uesp.net/wiki/" + Location.Namespace + ":" + encodeURIComponent(Location.WikiPage) + "'>" + Location.Namespace + ":" + Location.WikiPage + "</a></div>";
 	}
 	
 	return Content;
