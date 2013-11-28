@@ -3187,7 +3187,7 @@ function umUpdateSearchFromInput(InputValues)
 
 	if (SearchText && SearchText !== "")
 	{
-		umMapState.SearchText = decodeURIComponent(SearchText).replace('+', ' ');
+		umMapState.SearchText = decodeURIComponent(SearchText).replace(/\+/g, ' ');
 		umMapState.StartRow   = parseInt(InputValues.startsearch, 10);
 		var InputBox = document.getElementById("umSearchInputText");
 		if (InputBox) InputBox.value = umMapState.SearchText;
