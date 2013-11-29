@@ -2,6 +2,13 @@
 #
 # Changes the JS version number in all the map HTML files.
 # by Dave Humphrey (dave@uesp.net)
+#
+# Usage:
+#	updatejsver.sh
+#       updatejsver.sh [label]
+#
+# Without an explicit version label the current date in the format YYYY-MM-DD will be used.
+#
 
 INPUTVER="$1"
 
