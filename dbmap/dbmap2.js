@@ -113,13 +113,18 @@ function umGetMapMarkerIcon(MarkerType)
  		case 51:	Icon = "DawnstarCastle"; break;
  		case 52:	Icon = "DawnstarCapitol"; break;
 			//New Dragonborn marker types
-		case 53:	Icon = "Shrine"; break;
-		case 54:	Icon = "Town"; break;
-		case 55:	Icon = "Shrine"; break;
-		case 56:	Icon = "ImperialTower"; break;
-		case 57:	Icon = "Other"; break;
-		case 58:	Icon = "Other"; break;
-		case 59:	Icon = "Fort"; break;
+		case 53:	Icon = "TempleMiraak"; break;
+		case 54:	Icon = "RavenRock"; break;
+		case 55:	Icon = "StandingStone"; break;
+		case 56:	Icon = "TelvanniTower"; break;
+		case 57:	Icon = "ToSkyrim"; break;
+		case 58:	Icon = "ToSolstheim"; break;
+		case 59:	Icon = "CastleKarstaag"; break;
+
+		case 60:        Icon = "Door"; break;
+		case 61:        Icon = "Shrine"; break;
+		case 62:        Icon = "Other"; break;
+		case 63:        Icon = "DragonLair"; break;
 		case 100:
 		default: Icon = "Other";
 	}
@@ -193,6 +198,11 @@ function umGetMapMarkerType(MarkerType)
 		case 57:	Icon = "Teleport"; break;
 		case 58:	Icon = "Teleport"; break;
 		case 59:	Icon = "Castle"; break;
+
+		case 60:        Icon = "Door"; break;
+		case 61:        Icon = "Shrine"; break;
+		case 62:        Icon = "Ore Vein"; break;
+		case 63:        Icon = "Dragon Mound"; break;
 		case 100:
 		default: return "Other";
 	}
