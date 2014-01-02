@@ -60,7 +60,7 @@ if [ -z $? ]; then
         exit
 fi
 
-rsync -am $VERBOSEOPT --compare-dest=$SCRIPTPATH/ --exclude='.hg*' --exclude='czoom*' --exclude='zoom*' $INSTALLPATH/ $BACKUPPATH/
+rsync -acmI $VERBOSEOPT --compare-dest=$SCRIPTPATH/ --exclude='.hg*' --exclude='czoom*' --exclude='zoom*' $INSTALLPATH/ $BACKUPPATH/
 
 if [ -z $? ]; then
         echo "Error: Failed to backup the existing map source to $BACKUPPATH!"
@@ -69,7 +69,7 @@ fi
 
 echo "Backed up any old map source in the installation path to $BACKUPPATH."
 
-rsync -a $VERBOSEOPT --exclude='.hg*' --exclude='*.sh' $SCRIPTPATH/ $INSTALLPATH/
+rsync -acI $VERBOSEOPT --exclude='.hg*' --exclude='*.sh' $SCRIPTPATH/ $INSTALLPATH/
 
 
 if [ -z $? ]; then
