@@ -3219,7 +3219,7 @@ function umCreateSearchResultText(Location)
 	NewText += "<img width='16' height='16' id='umZoomIcon' src='" + umImagePath + umZoomIcon + "' alt='[zoomto]' border='0'></a>";
 		
 	if (Location.WikiPage) {
-		NewText += "<a id='umResultWikiLink' href='http://www.uesp.net/wiki/" + Location.Namespace + ":" + escape(Location.WikiPage) + "' onclick='umTestClick();'>";
+		NewText += "<a id='umResultWikiLink' href='http://www.uesp.net/wiki/" + Location.Namespace + ":" + escape(Location.WikiPage) + "' >";
 		NewText += "<img width='32' height='16' src='" + umImagePath + umWikiPageIcon +  "' border='0' alt='[Wiki Page]'/>";
 		NewText += "</a>";
 	}
