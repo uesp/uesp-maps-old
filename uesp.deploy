@@ -2,6 +2,8 @@
 # Deployment file for the UESP maps source as used by the uespdeploy script.
 #
 
+name = uesp.maps
+
 ignore = .hg*
 ignore = *.deploy
 ignore = *.sh
