@@ -24,10 +24,10 @@ Installation
 
 	mkdir /path/to/maps/
 	rsync -avz user@maps.uesp.net:/shared/uesp/maps/ /path/to/maps/
-
-   - Run the install script from the code path with the target installation directory:
+   
+   - Run the deploy script from the code path:
 
    	cd uesp.maps
-	./install.sh /path/to/maps/
+	uespdeploy
 
 
