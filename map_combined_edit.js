@@ -2445,7 +2445,7 @@ function CMapLocation(LocData)
 		this.Name = decodeURIComponent(LocData.getAttribute("name"));
 		
 		this.EditorID = decodeURIComponent(LocData.getAttribute("edid"));
-		if (this.EditorID === null || this.EditorID === 'null') this.EditorID = '';
+		if (this.EditorID === null || this.EditorID === 'null' || this.EditorID === undefined) this.EditorID = '';
 		
 		this.Worldspace = decodeURIComponent(LocData.getAttribute("ws"));
 		this.Type = parseInt(LocData.getAttribute("type"), 10);
@@ -2455,8 +2455,9 @@ function CMapLocation(LocData)
 		this.LabelPosition = parseInt(LocData.getAttribute("labpos"), 10);
 		this.WikiPage = decodeURIComponent(LocData.getAttribute("page"));
 		this.Tags = decodeURIComponent(LocData.getAttribute("tags"));
-		if (this.NameSpace === '' || this.Namespace === null) this.Namespace = umWikiNameSpace;
-		if (this.Region === '' || this.Region === null) this.Region = umRegionName;
+		
+		if (this.NameSpace === '' || this.Namespace === null || this.Namespace === undefined || this.Namespace === 'null') this.Namespace = umWikiNameSpace;
+		if (this.Region === '' || this.Region === null || this.Region === undefined || this.Region === 'null') this.Region = umRegionName;
 		
 		var ShowPos = parseInt(LocData.getAttribute("en"), 10);
 		this.Show = ShowPos !== 0;
