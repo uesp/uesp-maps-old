@@ -120,7 +120,7 @@ function umGetMapMarkerIcon(MarkerType)
 		case 52:	Icon = "DawnstarCapitol"; break;
 		case 60:	Icon = "Door"; break;
 		case 61:	Icon = "Shrine"; break;
-		case 62:	Icon = "Other"; break;
+		case 62:	Icon = "Vein"; break;
 		case 63:	Icon = "DragonLair"; break;
 		case 100:
 			/* fall through */
