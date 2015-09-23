@@ -2,6 +2,7 @@
 
 // Configuration file that includes the database host, user, and passwords
 require '/home/uesp/secrets/maps.secrets';
+require 'UespMemcachedSession.php';
 
 if (!$db = mysql_connect($uespMapsWriteDBHost, $uespMapsWriteUser, $uespMapsWritePW)) {
 	echo '<error value="Could not connect to mysql" />';
@@ -115,6 +116,7 @@ else if ($game == "db" || $game == "sr") {
 
 echo "<results>";
 
+UespMemcachedSession::install();
 session_name('uesp_net_wiki5_session');
 session_start();
 
