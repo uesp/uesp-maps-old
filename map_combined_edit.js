@@ -3647,12 +3647,12 @@ function umMakeSaveLocQuery(Location, LocForm)
 	var EditY = LocForm.umEditLocInfoY;
 	var EditZ = LocForm.umEditLocInfoZ;
 	
-	var Query = '?';
+	var Query = '?game=' + umGame;
 	
 	if (Location)
-		Query += 'id=' + Location.ID;
+		Query += '&id=' + Location.ID;
 	else
-		Query += '?id=-1';
+		Query += '&id=-1';
 
 	if (EditName) {
 		if (Location) Location.Name = EditName.value;
