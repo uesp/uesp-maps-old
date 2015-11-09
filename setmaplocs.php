@@ -4,6 +4,19 @@
 require '/home/uesp/secrets/maps.secrets';
 require 'UespMemcachedSession.php';
 
+// Date in the past
+header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
+// always modified
+header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
+// HTTP/1.1
+header("Cache-Control: no-store, no-cache, must-revalidate");
+header("Cache-Control: post-check=0, pre-check=0", false);
+// HTTP/1.0
+header("Pragma: no-cache");
+//XML Header
+//header("content-type:text/html");
+header("content-type:text/xml");
+
 if (!$db = mysql_connect($uespMapsWriteDBHost, $uespMapsWriteUser, $uespMapsWritePW)) {
 	echo '<error value="Could not connect to mysql" />';
 	exit;
@@ -13,27 +26,31 @@ if (array_key_exists('game' ,$_GET)) {
 	$game = mysql_real_escape_string($_GET['game']);
 }
 else {
-	if (strpos($_SERVER['PHP_SELF'],"obmap")) {
+	$self = strtolower($_SERVER['PHP_SELF']);
+	$self = strtolower($_SERVER['HTTP_REFERER']);
+	
+	if (strpos($self,"obmap")) {
 		$game = "ob";
 	}
-	else if (strpos($_SERVER['PHP_SELF'],"srmap"))
-	{
+	else if (strpos($self,"srmap"))	{
 		$game = "sr";
 	}
-	else if (strpos($_SERVER['PHP_SELF'],"simap")) {
+	else if (strpos($self,"simap")) {
 		$game = "si";
 	}
-	else if (strpos($_SERVER['PHP_SELF'],"mwmap")) {
+	else if (strpos($self,"mwmap")) {
 		$game = "mw";
 	}
-	else if (strpos($_SERVER['PHP_SELF'],"dbmap")) {
+	else if (strpos($self,"dbmap")) {
 		$game = "db";
 	}
-	else if (strpos($_SERVER['PHP_SELF'],"apmap")) {
+	else if (strpos($self,"apmap")) {
 		$game = "ap";
 	}
 	else {
-		$game = "sr";
+		echo '<error value="unknown game type" />';
+		error_log("Unknown game type from URL '$self'!");
+		exit;
 	}
 }
 
@@ -43,18 +60,6 @@ if (!mysql_select_db($dbname, $db)) {
 	echo '<error value="Could not select database" />';
 	exit;
 }
-      // Date in the past
-header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
-      // always modified
-header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
-      // HTTP/1.1
-header("Cache-Control: no-store, no-cache, must-revalidate");
-header("Cache-Control: post-check=0, pre-check=0", false);
-      // HTTP/1.0
-header("Pragma: no-cache");
-      //XML Header
-//header("content-type:text/html");
-header("content-type:text/xml");
 
 $locdata = array();
 	// Determine content to set
