@@ -66,12 +66,19 @@ else {
 	$query = "SELECT editorid, name FROM cellresource ORDER BY name;";
 	
 	$query = mysql_query($query);
+	
+	if (!$query)
+	{
+		error_log("cellresource Query Error: " . mysql_error());
+		exit('{ "error": "' . mysql_error()  . '" }');
+	}
+	
 	$rowcount = mysql_num_rows($query);
 	$count = 0;
 	
 	echo '{ "rowcount": '.$rowcount .', "resourcedata": [';
 	
-	while (($row=mysql_fetch_assoc($query))) {
+	while (($row = mysql_fetch_assoc($query))) {
 		//echo '"editorid": '.$row['editorid'].', ';
 		//echo '"name": "'.$row['name']. ', ';
 		if ($count) echo ', ';
