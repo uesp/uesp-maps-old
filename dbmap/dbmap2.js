@@ -17,7 +17,7 @@ var umTilePathPrefix = "/zoom";
 //var umMapURL	= umGame + "map.html";
 
 	// Live paths
-var umImagePath		= "http://maps.uesp.net/";
+var umImagePath 	= "http://maps.uesp.net/";
 var umMapURL		= "http://dbmap.uesp.net/";
 
 	// Default script locations

@@ -22,7 +22,7 @@ var umTilePathPrefix  = "/color/zoom";
 //var umMapURL	= umGame + "map.html";
 
 	// Live paths
-var umImagePath		= "http://maps.uesp.net/";
+var umImagePath 	= "http://maps.uesp.net/";
 var umMapURL		= "http://srmap.uesp.net/";
 
 	// Default script locations
