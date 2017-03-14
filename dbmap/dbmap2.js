@@ -52,6 +52,21 @@ var umMinZoomCellLabels		= 13;	// Zoom level the cell labels will be shown if en
 var umEnableNightMap		= false;
 var umEnableSimpleMap		= false;
 
+umBaseMapZoom = 17;
+umNumMapTilesX = 128;
+umNumMapTilesY = 128;
+umCellOffsetX = 12.0;
+umCellOffsetY = 31.0;
+
+umMapImagePrefix = "db";
+umMaxCellX = 31;
+
+umOorMapTile = "images/dboutofrange_color.jpg";
+umImagePath = "http://content3.uesp.net/maps/";
+
+umMapDefaultCenter = new google.maps.LatLng(89.95, -179.84);
+umMapBounds = new google.maps.LatLngBounds(new google.maps.LatLng(89.8875, -179.989), new google.maps.LatLng(90.000, -179.764));
+
 
 	// Get map marker icon image file
 function umGetMapMarkerIcon(MarkerType)
