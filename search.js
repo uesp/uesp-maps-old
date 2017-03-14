@@ -57,6 +57,7 @@ function umSearchFunction(StartSearchRow, ShowDisabled)
 		}
 
 		umGetMarkers(umMapState);
+		umUpdateSearchResultsButton(true);
 	}
 
 	umUpdateLink();
