@@ -13,12 +13,12 @@ var umGamePath		= umBasePath + umGameDir + "/";
 var umTilePathPrefix = "/zoom";
 
 	//Test/development paths only
-//var umImagePath	= "http://content3.uesp.net" + umBasePath;
+//var umImagePath	= "//content3.uesp.net" + umBasePath;
 //var umMapURL	= umGame + "map.html";
 
 	// Live paths
-var umImagePath 	= "http://maps.uesp.net/";
-var umMapURL		= "http://obmap.uesp.net/";
+var umImagePath 	= "//maps.uesp.net/";
+var umMapURL		= "//obmap.uesp.net/";
 
 	// Default script locations
 var umGetMapURL = "../getmaplocs.php";
