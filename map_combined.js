@@ -680,7 +680,7 @@ function InfoBox(opt_opts) {
   this.boxClass_ = opt_opts.boxClass || "infoBox";
   this.boxStyle_ = opt_opts.boxStyle || {};
   this.closeBoxMargin_ = opt_opts.closeBoxMargin || "2px";
-  this.closeBoxURL_ = opt_opts.closeBoxURL || "http://www.google.com/intl/en_us/mapfiles/close.gif";
+  this.closeBoxURL_ = opt_opts.closeBoxURL || "//www.google.com/intl/en_us/mapfiles/close.gif";
   if (opt_opts.closeBoxURL === "") {
     this.closeBoxURL_ = "";
   }
@@ -2710,7 +2710,7 @@ function umMakeInnerLocationInfoContent(Location, ID)
 	//Content += "<div class='umLocationInfoPos'>LabelPos: " + Location.LabelPosition + "</div>";
 
 	if (Location.WikiPage) {
-		Content += "<div class='umLocationInfoLink'><a href=\"http://www.uesp.net/wiki/" + Location.Namespace + ":" + encodeURIComponent(Location.WikiPage) + "\">" + Location.Namespace + ":" + Location.WikiPage + "</a></div>";
+		Content += "<div class='umLocationInfoLink'><a href=\"//www.uesp.net/wiki/" + Location.Namespace + ":" + encodeURIComponent(Location.WikiPage) + "\">" + Location.Namespace + ":" + Location.WikiPage + "</a></div>";
 	}
 	
 	return Content;

@@ -274,7 +274,7 @@ function umMakeInnerLocationInfoContent(Location, ID)
 	//Content += "<div class='umLocationInfoPos'>LabelPos: " + Location.LabelPosition + "</div>";
 
 	if (Location.WikiPage) {
-		Content += "<div class='umLocationInfoLink'><a href=\"http://www.uesp.net/wiki/" + Location.Namespace + ":" + encodeURIComponent(Location.WikiPage) + "\">" + Location.Namespace + ":" + Location.WikiPage + "</a></div>";
+		Content += "<div class='umLocationInfoLink'><a href=\"//www.uesp.net/wiki/" + Location.Namespace + ":" + encodeURIComponent(Location.WikiPage) + "\">" + Location.Namespace + ":" + Location.WikiPage + "</a></div>";
 	}
 	
 	return Content;
