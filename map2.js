@@ -9,6 +9,7 @@ var umCreatedCellGrid = false;
 var umLastGridLabelUpdate = false;
 var umWaitingForReponse = 0;
 var umSkipUpdate = false;
+var umIsOffline = false;
 
 
 	// Define the custom options for the game map
