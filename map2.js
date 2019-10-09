@@ -11,6 +11,11 @@ var umWaitingForReponse = 0;
 var umSkipUpdate = false;
 var umIsOffline = false;
 
+if (window.umEncodeURI == null)
+{
+	var umEncodeURI = true;
+}
+
 
 	// Define the custom options for the game map
 var umMapTypeOptions = 
