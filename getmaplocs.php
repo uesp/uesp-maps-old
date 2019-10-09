@@ -1,17 +1,11 @@
 <?php
 
-// Configuration file that includes the database host, user, and passwords
-require '/home/uesp/secrets/maps.secrets';
-
-if (!$db = mysql_connect($uespMapsReadDBHost, $uespMapsReadUser, $uespMapsReadPW)) {
-	echo 'Could not connect to mysql';
-	exit;
+if (array_key_exists('game' ,$_GET)) 
+{
+	$game = preg_replace("/[^A-Za-z0-9_]/", '', $_GET['game']);
 }
-
-if (array_key_exists('game' ,$_GET)) {
-	$game = mysql_real_escape_string($_GET['game']);
-}
-else {
+else 
+{
 	if (strpos($_SERVER['PHP_SELF'],"obmap")) {
 		$game = "ob";
 	}
@@ -31,21 +25,29 @@ else {
 	else if (strpos($_SERVER['PHP_SELF'],"apmap")) {
 		$game = "ap";
 	}
+	else if (strpos($_SERVER['PHP_SELF'],"trmap") || strpos($_SERVER['PHP_SELF'],"tamrielrebuilt")) {
+		$game = "tamrielrebuilt";
+	}
 	else {
 		$game = "sr";
 	}
 }
 
-$dbname = $game . '_map_data';
-$limitcount = '50';
-
-if (!mysql_select_db($dbname, $db)) {
-	echo 'Could not select database';
-	exit;
+if ($game == "tamrielrebuilt")
+{
+	$dbname = "tamrielrebuilt";
+	require '/home/uesp/secrets/tamrielrebuilt.secrets';
 }
+else
+{
+	$dbname = $game . '_map_data';
+	require '/home/uesp/secrets/maps.secrets';
+}
+
+$db = new mysqli($uespMapsReadDBHost, $uespMapsReadUser, $uespMapsReadPW, $dbname);
+if (!$db) die("Could not connect to mysql database '$dbname'!");
+
       // Date in the past
-//header("Expires: Mon, 26 Jul 1997 05:00:00 GMT"); 
-//header("Expires: " . gmdate("D, d M Y H:i:s", time()+86400*7) . " GMT");
 header("Expires: 0");
 header("Pragma: no-cache");
       // always modified
@@ -61,70 +63,70 @@ header("content-type:text/xml");
 
 	//Determine type content to return
 if (array_key_exists('zoom' ,$_GET)) {
-	$zoom =  mysql_real_escape_string($_GET['zoom']);
+	$zoom =  $db->real_escape_string($_GET['zoom']);
 }
 else {
 	$zoom = null;
 }
 
 if (array_key_exists('minzoom' ,$_GET)) {
-	$minzoom =  mysql_real_escape_string($_GET['minzoom']);
+	$minzoom =  $db->real_escape_string($_GET['minzoom']);
 }
 else {
 	$minzoom = null;
 }
 
 if (array_key_exists('BottomLeftX' ,$_GET)) {
-	$swx  = mysql_real_escape_string($_GET['BottomLeftX']);
+	$swx  = $db->real_escape_string($_GET['BottomLeftX']);
 }
 else {
 	$swx = null;
 }
 
 if (array_key_exists('BottomLeftY' ,$_GET)) {
-	$swy  = mysql_real_escape_string($_GET['BottomLeftY']);
+	$swy  = $db->real_escape_string($_GET['BottomLeftY']);
 }
 else {
 	$swy = null;
 }
 
 if (array_key_exists('TopRightX' ,$_GET)) {
-	$nex  = mysql_real_escape_string($_GET['TopRightX']);
+	$nex  = $db->real_escape_string($_GET['TopRightX']);
 }
 else {
 	$nex = null;
 }
 
 if (array_key_exists('TopRightY' ,$_GET)) {
-	$ney  = mysql_real_escape_string($_GET['TopRightY']);
+	$ney  = $db->real_escape_string($_GET['TopRightY']);
 }
 else {
 	$ney = null;
 }
 
 if (array_key_exists('SearchText' ,$_GET)) {
-	$search = mysql_real_escape_string($_GET['SearchText']);
+	$search = $db->real_escape_string($_GET['SearchText']);
 }
 else {
 	$search = null;
 }
 
 if (array_key_exists('StartRow' ,$_GET)) {
-	$startrow = intval(mysql_real_escape_string($_GET['StartRow']));
+	$startrow = intval($db->real_escape_string($_GET['StartRow']));
 }
 else {
 	$startrow = 0;
 }
 
 if (array_key_exists('ShowDisabled' ,$_GET)) {
-	$showdisabled = mysql_real_escape_string($_GET['ShowDisabled']);
+	$showdisabled = $db->real_escape_string($_GET['ShowDisabled']);
 }
 else {
 	$showdisabled = null;
 }
 
 if (array_key_exists('centeron' ,$_GET)) {
-	$centeron = mysql_real_escape_string($_GET['centeron']);
+	$centeron = $db->real_escape_string($_GET['centeron']);
 }
 else {
 	$centeron = null;
@@ -138,7 +140,7 @@ if ($minzoom == null) {
 
 $query = "SELECT SQL_CALC_FOUND_ROWS ID, ObLocX, ObLocY, ObLocZ, Name, MarkerType, DisplayLevel, LabelPosition, WikiPage, SearchTags, Enable";
 
-if ($game=="mw") {
+if ($game == "mw" || $game == "tamrielrebuilt") {
 	$query .= ", EditorID, Region, Namespace";
 }
 else if ($game == "sr" || $game == "db") {
@@ -176,6 +178,7 @@ else {
 }
 
 $query .= " ORDER BY Name ";
+
 if ($centeron) {
 	$query .= " LIMIT 1;";
 }
@@ -184,20 +187,28 @@ else {
 }
 
 //echo "<query>".urlencode($query)."</query>";
-$query = mysql_query($query);
+$query = $db->query($query);
 
-$result = mysql_query("SELECT FOUND_ROWS()");
-$totalrows = mysql_fetch_row($result);
-$rowcount = mysql_num_rows($query);
+$result = $db->query("SELECT FOUND_ROWS();");
+$totalrows = 0;
+
+if ($result)
+{
+	$totalrows = $result->fetch_row();
+	if ($totalrows) $totalrows = $totalrows[0];
+	if ($totalrows == null) $totalrows = 0;
+	$rowcount = $result->num_rows;
+}
 
 echo "<locations>";
-echo '<rowcount totalrows="'.$totalrows[0].'" rowcount="'.$rowcount.'" startrow="'.$startrow.'" />';
+echo '<rowcount totalrows="'.$totalrows.'" rowcount="'.$rowcount.'" startrow="'.$startrow.'" />';
 $count = 0;
 
-while (($row=mysql_fetch_assoc($query))){
+while (($row=$query->fetch_assoc()))
+{
         $tag = '<location id="'.$row['ID'].'" name="'.rawurlencode($row['Name']).'" X="'.$row['ObLocX'].'" Y="'.$row['ObLocY'].'" Z="'.$row['ObLocZ'].'" type="'.$row['MarkerType'].'" level="'.$row['DisplayLevel'].'" page="'.rawurlencode($row['WikiPage']).'" tags="'.rawurlencode($row['SearchTags']).'" labpos="'.$row['LabelPosition'];
 
-	if ($game=="mw") {
+	if ($game == "mw" || $game == "tamrielrebuilt") {
 		$tag .= '" edid="'.rawurlencode($row['EditorID']).'" region="'.rawurlencode($row['Region']).'" ns="'.$row['Namespace'];
 	}
 	else {
@@ -212,5 +223,6 @@ while (($row=mysql_fetch_assoc($query))){
 	echo $tag;
 	$count = $count + 1;
 }
+
 echo "</locations>";
-?>
+

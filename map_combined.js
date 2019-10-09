@@ -1395,6 +1395,12 @@ var umCreatedCellGrid = false;
 var umLastGridLabelUpdate = false;
 var umWaitingForReponse = 0;
 var umSkipUpdate = false;
+var umIsOffline = false;
+
+if (window.umEncodeURI == null)
+{
+	var umEncodeURI = true;
+}
 
 
 	// Define the custom options for the game map
@@ -2710,7 +2716,9 @@ function umMakeInnerLocationInfoContent(Location, ID)
 	//Content += "<div class='umLocationInfoPos'>LabelPos: " + Location.LabelPosition + "</div>";
 
 	if (Location.WikiPage) {
-		var wikiPage = encodeURIComponent(Location.WikiPage).replace(/'/g, "%27");
+		var wikiPage = Location.WikiPage;
+		if (umEncodeURI) wikiPage = encodeURIComponent(wikiPage).replace(/'/g, "%27");
+		
 		Content += "<div class='umLocationInfoLink'><a href=\"//www.uesp.net/wiki/" + Location.Namespace + ":" + wikiPage + "\">" + Location.Namespace + ":" + Location.WikiPage + "</a></div>";
 	}
 	
@@ -3224,7 +3232,10 @@ function umCreateSearchResultText(Location)
 	NewText += "<img width='16' height='16' id='umZoomIcon' src='" + umImagePath + umZoomIcon + "' alt='[zoomto]' border='0'></a>";
 		
 	if (Location.WikiPage) {
-		NewText += "<a id='umResultWikiLink' href=\"http://www.uesp.net/wiki/" + Location.Namespace + ":" + encodeURIComponent(Location.WikiPage) + "\" >";
+		var wikiPage = Location.WikiPage;
+		if (umEncodeURI) wikiPage = encodeURIComponent(wikiPage);
+		
+		NewText += "<a id='umResultWikiLink' href=\"http://www.uesp.net/wiki/" + Location.Namespace + ":" + wikiPage + "\" >";
 		NewText += "<img width='32' height='16' src='" + umImagePath + umWikiPageIcon +  "' border='0' alt='[Wiki Page]'/>";
 		NewText += "</a>";
 	}
