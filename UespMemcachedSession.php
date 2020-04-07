@@ -6,6 +6,8 @@
 
 require_once("/home/uesp/secrets/uespservers.secrets");
 
+if (!class_exists("UespMemcachedSession"))
+{
 
 class UespMemcachedSession
 {
@@ -99,4 +101,4 @@ class UespMemcachedSession
 	
 };
 
-
+}
